@@ -7,8 +7,7 @@ RUN echo "USERNAME=$USERNAME"
 WORKDIR /workdir
 
 RUN sudo apt-get -y install \
-    rsync \
-    telnet
+    rsync
 
 RUN west init && \
     west update 
