@@ -39,5 +39,5 @@ done
 docker run -it --privileged \
     -v /dev/bus/usb:/dev/bus/usb \
     $forward_paths \
-    zephyr-builder
+    jodzikk/zephyr-builder
 ```
