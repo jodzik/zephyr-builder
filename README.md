@@ -1,8 +1,18 @@
+# zephyr-builder
+
+Docker контейнер для сборки приложений под zephyr.  
+Содержит в себе:
+- Toolchain-ы для сборки.
+- Инструменты для прошивки: openocd, pyocd и т.п.
+- west.
+- spore-codegen для простейшей кодо-генерации.
+
+## Пример скрипта запуска контейнера
+
+```bash
 #!/bin/bash
 
 set -e
-
-readonly ZEPHYR_BUILDER_HEADERS_DIR_NAME="zephyr_headers"
 
 if [[ -z "$1" ]]; then
     echo "No one path specified, at least one required."
@@ -21,5 +31,5 @@ done
 docker run -it --privileged \
     -v /dev/bus/usb:/dev/bus/usb \
     $forward_paths \
-    -v "$target_dir_path/$ZEPHYR_BUILDER_HEADERS_DIR_NAME:/workdir/$ZEPHYR_BUILDER_HEADERS_DIR_NAME/" \
     zephyr-builder
+```
