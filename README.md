@@ -27,7 +27,7 @@ if [[ -z "$1" ]]; then
     exit 22
 fi
 
-readonly target_dir_path="$(dirname $1)"
+readonly main_dir_name="$(basename $1)"
 
 for target_path in "$@"
 do
@@ -39,5 +39,6 @@ done
 docker run -it --privileged \
     -v /dev/bus/usb:/dev/bus/usb \
     $forward_paths \
-    jodzikk/zephyr-builder
+    jodzikk/zephyr-builder \
+    /bin/bash -c "cd $main_dir_name && exec /bin/bash"
 ```
